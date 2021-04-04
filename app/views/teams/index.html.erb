@@ -1,3 +1,9 @@
+<p id="notice"><%= notice %></p>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 <div class="container">
   <h1>Teams</h1>
 
@@ -26,4 +32,5 @@
   <br>
 
   <%= link_to 'New Team', new_team_path, class: 'btn btn-success text-white' %>
+  <%= link_to 'Start Game', start_path, class: 'btn btn-warning' %>
 </div>

@@ -1,9 +1,21 @@
 class TeamsController < ApplicationController
+  include TeamsHelper
   before_action :set_team, only: %i[ show edit update destroy ]
 
   # GET /teams or /teams.json
   def index
     @teams = Team.all
+  end
+
+  def start_game
+    teams = Team.all
+    #binding.pry
+    if (teams.count) == 16
+      Divisions.new.into_division
+      flash.now[:notice] = "Success"
+    else
+      flash.now[:notice] = "Кол-во команд не достаточна"
+    end
   end
 
   # GET /teams/1 or /teams/1.json
