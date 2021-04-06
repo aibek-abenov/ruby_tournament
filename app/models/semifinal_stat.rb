@@ -1,0 +1,2 @@
+class SemifinalStat < ApplicationRecord
+end
