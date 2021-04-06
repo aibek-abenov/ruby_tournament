@@ -2,7 +2,6 @@ module TeamsHelper
   class Divisions
 
     def into_division
-      #binding.pry
       teams = Team.all
       teams_name = []
 
@@ -19,7 +18,7 @@ module TeamsHelper
       division_a = teams_list.sample(division_size)
 
       division_b = teams_list - division_a
-
+      Division.destroy_all
       save_in_db(division_a, division_b)
     end
 

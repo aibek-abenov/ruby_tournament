@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   include TeamsHelper
+  include TournamentsHelper
+
   before_action :set_team, only: %i[ show edit update destroy ]
 
   # GET /teams or /teams.json
@@ -7,15 +9,21 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  def start_game
+  def start_division
     teams = Team.all
-    #binding.pry
+
     if (teams.count) == 16
       Divisions.new.into_division
       flash.now[:notice] = "Success"
+      @divisions = Division.all
     else
-      flash.now[:notice] = "Кол-во команд не достаточна"
+      flash.now[:notice] = "Кол-во команд не корректна"
     end
+  end
+
+  def go_tournament
+    Tournament.new.final_eight
+    #Playoff.new.go_to_playoff
   end
 
   # GET /teams/1 or /teams/1.json

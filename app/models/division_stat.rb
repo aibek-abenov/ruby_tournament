@@ -1,0 +1,2 @@
+class DivisionStat < ApplicationRecord
+end
