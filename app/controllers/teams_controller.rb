@@ -3,6 +3,7 @@ class TeamsController < ApplicationController
   include TournamentsHelper
   include PlayoffsHelper
   include SemifinalsHelper
+  include FinalsHelper
 
   before_action :set_team, only: %i[ show edit update destroy ]
 
@@ -11,7 +12,7 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  def start_division
+  def to_division
     teams = Team.all
 
     if (teams.count) == 16
@@ -23,16 +24,40 @@ class TeamsController < ApplicationController
     end
   end
 
-  def go_tournament
+  def start_tournament
     DivisionStat.destroy_all
     PlayoffStat.destroy_all
+    SemifinalStat.destroy_all
+    FinalStat.destroy_all
+
     Tournament.new.final_eight
     Playoff.new.go_to_playoff
     Semifinals.new.go_to_semifinal
+    Finals.new.go_to_final
   end
 
   # GET /teams/1 or /teams/1.json
   def show
+  end
+
+  def show_all_statistics
+    @winner = FinalStat.where(is_winner: true)
+  end
+
+  def show_division_stat
+    @division_stat = DivisionStat.all
+  end
+
+  def show_playoff_stat
+    @playoff_stat = PlayoffStat.all
+  end
+
+  def show_semifinal_stat
+    @semifinal_stat = SemifinalStat.all
+  end
+
+  def show_final_stat
+    @final_stat = FinalStat.all
   end
 
   # GET /teams/new

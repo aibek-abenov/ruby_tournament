@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Semi-final statistics</h1>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight">
+    <%= link_to 'Back to home page', root_path, class: 'btn btn-info text-white' %>
+    <%= link_to 'Back to tournament results', show_all_statistics_path, class: 'btn btn-info text-white' %>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Division</th>
+        <th>Team</th>
+        <th>Win</th>
+        <th>Loss</th>
+        <th>Reached the finals?</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @semifinal_stat.each do |team| %>
+        <tr>
+          <td><%= team.division %></td>
+          <td><%= team.team %></td>
+          <td><%= team.win %></td>
+          <td><%= team.loss %></td>
+          <td><%= team.to_final %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

@@ -1,0 +1,33 @@
+<h1>Tournament Winner</h1>
+<h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Win</th>
+        <th>Loss</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @winner.each do |team| %>
+        <tr>
+          <td><%= team.team %></td>
+          <td><%= team.win %></td>
+          <td><%= team.loss %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</h1>
+<div class="d-flex flex-row bd-highlight">
+  <div class="p-2 bd-highlight">
+  <%= link_to 'View division results', show_division_stat_path, class: 'btn btn-info text-white' %>
+  <%= link_to 'View play off results', show_playoff_stat_path, class: 'btn btn-info text-white' %>
+  <%= link_to 'View semi-final results', show_semifinal_stat_path, class: 'btn btn-info text-white' %>
+  <%= link_to 'View final results', show_final_stat_path, class: 'btn btn-info text-white' %>
+  <%= link_to 'Start New Tournament', start_path, class: 'btn btn-success text-white' %>
+  <%= link_to 'Back to home page', root_path, class: 'btn btn-info text-white' %>
+  </div>
+</div>

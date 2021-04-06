@@ -6,6 +6,12 @@
 <% end %>
 <div class="container">
   <h1>Teams</h1>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight">
+    <%= link_to 'New Team', new_team_path, class: 'btn btn-success text-white' %>
+    <%= link_to 'Go To Division', to_division_path, class: 'btn btn-warning' %>
+    </div>
+  </div>
 
   <table class="table table-bordered">
     <thead>
@@ -32,5 +38,5 @@
   <br>
 
   <%= link_to 'New Team', new_team_path, class: 'btn btn-success text-white' %>
-  <%= link_to 'Start To Division', start_path, class: 'btn btn-warning' %>
+  <%= link_to 'Go To Division', to_division_path, class: 'btn btn-warning' %>
 </div>
