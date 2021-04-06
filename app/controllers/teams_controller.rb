@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   include TeamsHelper
   include TournamentsHelper
+  include PlayoffsHelper
 
   before_action :set_team, only: %i[ show edit update destroy ]
 
@@ -23,7 +24,7 @@ class TeamsController < ApplicationController
 
   def go_tournament
     Tournament.new.final_eight
-    #Playoff.new.go_to_playoff
+    Playoff.new.go_to_playoff
   end
 
   # GET /teams/1 or /teams/1.json

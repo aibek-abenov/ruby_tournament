@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_052207) do
+ActiveRecord::Schema.define(version: 2021_04_06_082452) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "division_stats", force: :cascade do |t|
     t.string "division"
@@ -30,10 +33,12 @@ ActiveRecord::Schema.define(version: 2021_04_06_052207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "final_eights", force: :cascade do |t|
-    t.string "division_name"
-    t.string "team_name"
-    t.integer "goals"
+  create_table "playoff_stats", force: :cascade do |t|
+    t.string "division"
+    t.string "team"
+    t.integer "win"
+    t.integer "loss"
+    t.boolean "to_semifinal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

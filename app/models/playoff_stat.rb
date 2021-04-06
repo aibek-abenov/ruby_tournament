@@ -1,0 +1,2 @@
+class PlayoffStat < ApplicationRecord
+end
